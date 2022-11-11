@@ -25,7 +25,7 @@ def Animation(variable, xpos, ypos, endx, endy, steps):
 def quizgame():
     global QnA, qi, nq, score, window
     window = "QuizGame"
-    QnA = [["1.When was Minecraft released?", "1. 2005", "2. 2009", "3. 2011", "4. 2013", 2], ["2.When was Undertale released?", "1. 2013", "2. 2014", "3. 2015", "4. 2016", 3],["3.What are the latest Windows?", "1. 9", "2. 10", "3. 11", "4. 12", 2],["4.Which of the following is the worst?", "1. Windows", "2. Mac", "3. Linux", "4. None of the above", 2],["What number is this question?", "1. 3", "2. 4", "3. 5", "4. 6", 3]]
+    QnA = [["1.When was Minecraft released?", "1. 2005", "2. 2009", "3. 2011", "4. 2013", 2], ["2.When was Undertale released?", "1. 2013", "2. 2014", "3. 2015", "4. 2016", 3],["3.What are the latest Windows?", "1. 9", "2. 10", "3. 11", "4. 12", 3],["4.Which of the following is the worst?", "1. Windows", "2. Mac", "3. Linux", "4. None of the above", 2],["What number is this question?", "1. 3", "2. 4", "3. 5", "4. 6", 3]]
     qi = 0
     nq = True
     score = 0
@@ -206,9 +206,6 @@ def colourgame():
             answertxt.delete(0, 'end')
             Shuffle()
 
-    def Delete(*args):
-            answertxt.delete(0, 'end')
-
     def StartGame(*args):
         global playing
         if playing == False:
@@ -218,7 +215,6 @@ def colourgame():
 
     SetUpScreen()
     win.bind("<Return>", StartGame)
-    win.bind("<BackSpace>", Delete)
 
 def wordtyper():
     global words, score, timeleft, words, nextwordlock, playing, window, timer, usablewords, wordcount
@@ -311,7 +307,7 @@ def wordtyper():
             answertxt.delete(0, 'end')
             Shuffle()
 
-    def Delete(*args):
+    def DeleteWT(*args):
         global score, timeleft, playing
         if playing == True:
             answertxt.delete(0, 'end')
@@ -328,7 +324,7 @@ def wordtyper():
 
     SetUpScreen()
     win.bind("<Return>", StartGame)
-    win.bind("<BackSpace>", Delete)
+    win.bind("<BackSpace>", DeleteWT)
 
 def Checkname(testname):
     global lblname, name
@@ -382,7 +378,7 @@ def Screen(type):
         logo = PhotoImage(file="pikachu.png")
         image = Label(win, image=logo)
         Animation(image, 400, 500, 400, 400, 75)
-        imagelbl = Label(win, text="Made by: Herosteve198G")
+        imagelbl = Label(win, text="Made by: Herosteve")
         Animation(imagelbl, 275, 500, 275, 450, 75)
         homebtnqg.config(command= quizgame)
         homebtncg.config(command= colourgame)
